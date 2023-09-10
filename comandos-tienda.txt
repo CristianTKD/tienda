@@ -1,0 +1,152 @@
+# Inicio de proyecto tienda
+composer create-project --prefer-dist laravel/laravel tienda
+# para ingresar dentro del proyecto
+cd tienda
+# Inicializar con Visual Studio Code
+code .
+# Después de instalar proyecto recargar laragon y utilizamos nombre de proyecto más .test en el navegador
+tienda.test
+# Uso de php myAdmin
+http://127.0.0.1/phpmyadmin
+
+http://localhost/phpmyadmin/
+# username root
+# password no tiene clave
+
+# Migración 
+# Básicamente como queremos que quede nuestra tabla en la base de datos
+# Por ejemplo una tabla que va a alojar todos los productos en la base de datos
+php artisan make:migration create_products_table
+
+# Ésta migración va a quedar en database migrations
+# Aquí ingresar a create_products_table
+# Dentro esta table Increments Id (Indica que es Id único por el cual vamos a identificar cada producto) -- y -- 
+# table timestamps (crea 2 campos) la tabla 1. Created_at (Guarda en que momento fue creado este registro)-- y -- 
+# 2. updated_at (guarda en que momento ha sido actualizado)
+
+# sumar 2 campos
+# $table->text('description');
+# $table->integer('price');
+
+# Migrar las tablas a la base de datos
+php artisan migrate
+
+# Crear un modelo
+# Este se encarga de comunicarse con una tabla de la base de datos y ejecutar tareas, como guardar un registro, eliminar, actualizar un registro
+# Se crea un modelo por cada tabla - User ya existe y esta alojada en Models
+php artisan make:model Product
+
+# Configurar nuestras rutas url en VSC
+# Las rutas se almacenan en el archivo web,php dentro de la carpeta routes
+# Para crear una ruta se configura: 
+# Route::get('/', function(){
+#    return 'Esta es la url raíz';
+# });
+# Como 1er parámetro se pasa la url a la que va a responder, en este caso '/' para que esta ruta ejecute mi código en el momento en que vaya a la raíz de la aplicación; Lo 2do que se le va a pasar es una function() y aquí se considerara una cadena de texto return
+# Abrir el navegador y así abrir mi aplicación que se llama tienda
+# tienda.test
+
+# También se pueden hacer rutas por el método:
+# Route::post(); - Para almacenar registros en nuestra base de datos
+# Route::put(); - Que responde a una petición de tipo put para actualizar datos
+# Route::delete(); - Para eliminarlos
+
+
+# -- Ruta y vista de la página principal --
+# Rutas necesarias para nuestra aplicación
+# Crear ruta productos
+# Route::get('products', function(){
+#   return view();
+# });
+# En retorno se puede haber considerado texto 'Lista de productos', pero es mejor view();
+# Las view son todas las vistas de nuestro HTML
+
+# Las vistas se alojan en la carpeta resources views
+
+# Ahora le voy adecir que regrese una vista que está dentro de la carpeta Products en un archivo llamado index
+
+# Y en views en VSC voy a crear una 
+# carpeta llamada products y dentro de esta un 
+# archivo llamado index.blade.php
+
+# Laravel para las vistas utiliza un motor de plantillas llamado blade y para poder hacer uso de blade tenemos que ponerle a las vistas la extensión blade.php 
+
+# Para esta aplicación usaremos framework Bootstrap
+# Copiar el CSS de Bootstrap
+
+# Ahora se borra <h1>Listado de productos</h1> y se crea un 
+# container en su reemplazo
+<div class="container">
+# Dentro de este un Row
+<div class="row">
+# Y luego una columna
+<div class="col-md-12">
+</div>
+# Seguido un card
+<div class="card">
+
+# sumado un card header
+<div class="card-header">
+# Y dentro de todo esto el titulo
+Listado de productos
+<a href="" class="btn btn-success btn-sm">Nuevo producto</a>
+
+# Luego un card body
+<div class="card-body">
+# Luego acá se sumará la nómina de los productos, por ahora quedará ...
+
+# A continuación se creará un botón para insertar Nuevo producto, este viene a continuación de Listado de producto (esta más arriba)
+# El botón aparece apegado a la izquierda y se requiere a la derecha para eso sumar dentro de a ref
+float-right
+
+
+# -- Ruta y vista del formulario para crear productos --
+
+
+
+# -- Trabajando en la vista para crear productos --
+
+
+
+
+# -- Definición de la ruta para crear productos --
+
+
+
+
+
+# -- Creando productos y redireccionamiento a la ruta principal --
+
+
+
+
+
+# -- Mostrar listado de productos y una alerta cuando creamos productos --
+
+
+
+# -- Eliminar productos (1) --
+
+
+
+
+
+# -- Eliminar productos (2) --
+
+
+
+# -- Editar productos (1) --
+
+
+
+# -- Editar productos (2) --
+
+
+
+# -- Refactorizando las vistas blade --
+
+
+
+# -- Protegiendo nuestra aplicación con autenticación --
+#Crear una ruta para la autenticación en webphp
+Route::middleware('auth')
